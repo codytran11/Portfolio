@@ -1,8 +1,13 @@
 function Hero() {
   return (
-    <section>
-      <h1>Hi! I'm Cody</h1>
-      <p>Computer Science & Business Administration 2nd Year @ USC</p>
+    <section className="hero">
+      <h1 className="hero-title">
+        Hi! I'm <span>Cody</span>
+      </h1>
+
+      <p className="hero-subtitle">
+        Computer Science & Business Administration 2nd Year @ USC
+      </p>
     </section>
   );
 }
