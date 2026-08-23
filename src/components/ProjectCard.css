@@ -1,0 +1,365 @@
+/* ========================================
+   PROJECT LAYOUT
+======================================== */
+
+.project-showcase {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 0 40px;
+}
+
+.project-showcase.expanded {
+  margin: 120px auto;
+
+  display: grid;
+  grid-template-columns: 1.4fr 0.8fr;
+  gap: 60px;
+  align-items: center;
+
+  animation: projectExpand 0.5s ease forwards;
+}
+
+/* ========================================
+   PROJECT EXPANSION ANIMATION
+======================================== */
+
+@keyframes projectExpand {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ========================================
+   COLLAPSED PROJECT LAUNCHER
+======================================== */
+
+.project-launcher {
+  width: 100%;
+  padding: 28px 30px;
+
+  display: flex;
+  align-items: center;
+  gap: 24px;
+
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  color: white;
+  text-align: left;
+  cursor: pointer;
+
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    background 0.3s ease;
+}
+
+.project-launcher:hover {
+  transform: translateY(-4px);
+  border-color: rgba(167, 139, 250, 0.6);
+  background: rgba(167, 139, 250, 0.05);
+}
+
+.project-launcher-icon {
+  color: #a78bfa;
+  font-size: 14px;
+}
+
+.project-launcher-info {
+  flex: 1;
+}
+
+.project-launcher-info h2 {
+  margin: 0;
+  font-size: 28px;
+}
+
+.project-launcher-info p {
+  margin: 6px 0 0;
+  color: #a1a1aa;
+  font-size: 14px;
+}
+
+.project-launcher-arrow {
+  font-size: 24px;
+
+  transition: transform 0.3s ease;
+}
+
+.project-launcher:hover .project-launcher-arrow {
+  transform: translate(4px, -4px);
+}
+
+/* ========================================
+   PROJECT IMAGE / GALLERY
+======================================== */
+
+.project-visual {
+  position: relative;
+  height: 600px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  overflow: visible;
+}
+
+.project-image {
+  max-height: 600px;
+  max-width: 100%;
+
+  width: auto;
+  height: auto;
+
+  display: block;
+  object-fit: contain;
+
+  animation: imageFade 0.35s ease;
+}
+
+/* ========================================
+   IMAGE CHANGE ANIMATION
+======================================== */
+
+@keyframes imageFade {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ========================================
+   GALLERY ARROWS
+======================================== */
+
+.gallery-controls {
+  position: absolute;
+
+  top: 50%;
+  left: 0;
+  right: 0;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.gallery-controls button {
+  pointer-events: auto;
+
+  width: 44px;
+  height: 44px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+
+  background: rgba(20, 20, 30, 0.7);
+  backdrop-filter: blur(8px);
+
+  color: white;
+  font-size: 22px;
+
+  cursor: pointer;
+
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.gallery-controls button:hover {
+  background: rgba(167, 139, 250, 0.25);
+  border-color: rgba(167, 139, 250, 0.6);
+
+  transform: scale(1.08);
+}
+
+/* ========================================
+   GALLERY DOTS
+======================================== */
+
+.gallery-dots {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: -32px;
+
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.gallery-dots button {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+
+  border: none;
+  border-radius: 50%;
+
+  background: #555;
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.gallery-dots button:hover {
+  background: #8b8b8b;
+}
+
+.gallery-dots button.active {
+  background: #a78bfa;
+  transform: scale(1.3);
+}
+
+/* ========================================
+   PROJECT INFORMATION
+======================================== */
+
+.project-details {
+  padding: 20px 0;
+}
+
+.project-topline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.project-number {
+  margin-bottom: 18px;
+
+  color: #a78bfa;
+  font-size: 14px;
+}
+
+.project-details h2 {
+  margin: 0 0 10px;
+
+  font-size: 42px;
+}
+
+.project-category {
+  margin-bottom: 24px;
+
+  color: #a78bfa;
+}
+
+.project-description {
+  color: #a1a1aa;
+
+  line-height: 1.7;
+}
+
+/* ========================================
+   TECHNOLOGIES
+======================================== */
+
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+
+  margin: 28px 0;
+}
+
+.project-tech span {
+  color: #d4d4d8;
+
+  font-size: 13px;
+}
+
+/* ========================================
+   PROJECT LINK
+======================================== */
+
+.project-details a {
+  color: white;
+  text-decoration: none;
+
+  transition: color 0.2s ease;
+}
+
+.project-details a:hover {
+  color: #a78bfa;
+}
+
+/* ========================================
+   CLOSE BUTTON
+======================================== */
+
+.project-close {
+  border: none;
+  background: transparent;
+
+  color: #a1a1aa;
+  font-size: 28px;
+
+  cursor: pointer;
+
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.project-close:hover {
+  color: white;
+
+  transform: rotate(90deg);
+}
+
+.project-launcher {
+  position: relative;
+  overflow: hidden;
+}
+
+.project-launcher::before {
+  content: "";
+  position: absolute;
+
+  left: var(--mouse-x);
+  top: var(--mouse-y);
+
+  width: 180px;
+  height: 180px;
+
+  transform: translate(-50%, -50%);
+
+  background: radial-gradient(
+    circle,
+    rgba(167, 139, 250, 0.18) 0%,
+    rgba(167, 139, 250, 0.08) 35%,
+    transparent 70%
+  );
+
+  pointer-events: none;
+  opacity: 0;
+
+  transition: opacity 0.2s ease;
+}
+
+.project-launcher:hover::before {
+  opacity: 1;
+}

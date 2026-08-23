@@ -1,0 +1,828 @@
+.about {
+  position: relative;
+
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 120px 50px 150px;
+
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: 90px;
+  align-items: center;
+
+  opacity: 0;
+  transform: translateY(30px);
+
+  overflow: visible;
+}
+
+.about.visible {
+  animation: aboutFadeIn 0.8s ease forwards;
+}
+
+.about-sigil {
+  position: absolute;
+
+  width: 720px;
+  height: 720px;
+
+  top: 50%;
+  left: 29%;
+
+  transform: translate(-50%, -50%);
+
+  pointer-events: none;
+
+  z-index: 0;
+
+  opacity: 0;
+
+  filter: drop-shadow(0 0 8px rgba(109, 40, 217, 0.12))
+    drop-shadow(0 0 25px rgba(76, 29, 149, 0.08));
+
+  transition: opacity 1s ease;
+}
+
+.about.visible .about-sigil {
+  opacity: 1;
+
+  animation:
+    sigilRotate 90s linear infinite,
+    sigilBreath 6s ease-in-out infinite;
+}
+
+.sigil-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.sigil-ring {
+  fill: none;
+
+  stroke: rgba(91, 33, 182, 0.2);
+
+  stroke-width: 1;
+}
+
+.sigil-ring-inner {
+  stroke: rgba(109, 40, 217, 0.16);
+
+  stroke-dasharray: 3 10;
+}
+
+.sigil-ring-small {
+  stroke: rgba(139, 92, 246, 0.12);
+
+  stroke-dasharray: 1 12;
+}
+
+.sigil-geometry {
+  fill: none;
+
+  stroke: rgba(76, 29, 149, 0.18);
+
+  stroke-width: 1;
+}
+
+.sigil-geometry-inner {
+  stroke: rgba(109, 40, 217, 0.14);
+
+  stroke-dasharray: 4 8;
+}
+
+.sigil-diamond {
+  fill: none;
+
+  stroke: rgba(139, 92, 246, 0.13);
+
+  stroke-width: 1;
+}
+
+.sigil-line {
+  stroke: rgba(91, 33, 182, 0.12);
+
+  stroke-width: 1;
+}
+
+.sigil-rune {
+  fill: rgba(109, 40, 217, 0.1);
+
+  stroke: rgba(139, 92, 246, 0.35);
+
+  stroke-width: 1;
+}
+
+.sigil-node {
+  fill: #6d28d9;
+
+  opacity: 0.5;
+
+  filter: drop-shadow(0 0 5px rgba(109, 40, 217, 0.8))
+    drop-shadow(0 0 12px rgba(76, 29, 149, 0.5));
+
+  transform-box: fill-box;
+  transform-origin: center;
+
+  animation: sigilNodePulse 3s ease-in-out infinite;
+}
+
+.sigil-star {
+  fill: #8b5cf6;
+
+  opacity: 0.35;
+
+  filter: drop-shadow(0 0 5px rgba(139, 92, 246, 0.7));
+
+  transform-box: fill-box;
+  transform-origin: center;
+
+  animation: sigilStarPulse 4s ease-in-out infinite;
+}
+
+.about-visual {
+  position: relative;
+
+  width: 560px;
+  max-width: 100%;
+  height: 600px;
+
+  margin: 0 auto;
+
+  z-index: 2;
+}
+
+.about-visual.has-active-photo {
+  cursor: pointer;
+}
+
+.about-constellation {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: visible;
+
+  z-index: 1;
+
+  pointer-events: none;
+
+  filter: drop-shadow(0 0 5px rgba(139, 92, 246, 0.45))
+    drop-shadow(0 0 12px rgba(109, 40, 217, 0.2));
+
+  transition:
+    opacity 0.4s ease,
+    filter 0.4s ease;
+}
+
+.has-active-photo .about-constellation {
+  opacity: 0.15;
+
+  filter: blur(1px);
+}
+
+.constellation-line {
+  fill: none;
+
+  stroke: rgba(167, 139, 250, 0.75);
+
+  stroke-width: 1.7;
+
+  stroke-dasharray: 7 5;
+  stroke-dashoffset: 35;
+
+  opacity: 0;
+}
+
+.about.visible .constellation-line {
+  animation:
+    constellationDraw 1.3s ease forwards,
+    constellationPulse 3s ease-in-out infinite 1.3s,
+    constellationMove 7s linear infinite 1.3s;
+}
+
+.constellation-node {
+  fill: #a78bfa;
+
+  opacity: 0;
+
+  filter: drop-shadow(0 0 5px rgba(167, 139, 250, 1))
+    drop-shadow(0 0 12px rgba(139, 92, 246, 0.8))
+    drop-shadow(0 0 20px rgba(109, 40, 217, 0.45));
+
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.about.visible .constellation-node {
+  opacity: 1;
+
+  animation: nodePulse 2.2s ease-in-out infinite;
+}
+
+.constellation-star {
+  fill: #ddd6fe;
+
+  opacity: 0;
+
+  filter: drop-shadow(0 0 5px rgba(221, 214, 254, 1))
+    drop-shadow(0 0 12px rgba(167, 139, 250, 0.8));
+
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.about.visible .constellation-star {
+  opacity: 1;
+
+  animation: starPulse 1.8s ease-in-out infinite;
+}
+
+.about-photo {
+  position: absolute;
+
+  overflow: hidden;
+
+  background: #111018;
+
+  border: 1px solid rgba(139, 92, 246, 0.5);
+
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.35),
+    0 0 25px rgba(91, 33, 182, 0.08);
+
+  cursor: pointer;
+
+  transition:
+    transform 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.4s ease,
+    width 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+    height 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+    top 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+    left 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+    right 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+    bottom 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+    border-radius 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.3s ease,
+    box-shadow 0.4s ease,
+    filter 0.4s ease;
+
+  will-change: transform, opacity, width, height, top, left;
+
+  z-index: 3;
+}
+
+.about-photo img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  transition:
+    transform 0.6s ease,
+    filter 0.4s ease;
+}
+
+.about-photo:hover {
+  border-color: #a78bfa;
+
+  box-shadow:
+    0 28px 70px rgba(0, 0, 0, 0.48),
+    0 0 40px rgba(109, 40, 217, 0.18);
+}
+
+.about-photo:hover img {
+  transform: scale(1.025);
+
+  filter: brightness(1.04);
+}
+
+.photo-one {
+  width: 260px;
+  height: 360px;
+
+  top: 120px;
+  left: 150px;
+
+  border-radius: 26px;
+
+  border-color: rgba(167, 139, 250, 0.8);
+
+  transform: rotate(-1deg);
+
+  z-index: 5;
+
+  box-shadow:
+    0 28px 65px rgba(0, 0, 0, 0.42),
+    0 0 0 6px rgba(139, 92, 246, 0.035),
+    0 0 40px rgba(109, 40, 217, 0.1);
+}
+
+.photo-two {
+  width: 195px;
+  height: 132px;
+
+  top: 45px;
+  left: -15px;
+
+  border-radius: 12px;
+
+  transform: rotate(-6deg);
+
+  z-index: 2;
+}
+
+.photo-three {
+  width: 205px;
+  height: 143px;
+
+  right: -25px;
+  bottom: 45px;
+
+  border-radius: 12px;
+
+  transform: rotate(5deg);
+
+  z-index: 2;
+}
+
+.photo-one:hover {
+  transform: rotate(-1deg);
+}
+
+.photo-two:hover {
+  transform: rotate(-6deg);
+}
+
+.photo-three:hover {
+  transform: rotate(5deg);
+}
+
+.photo-focused {
+  width: 340px;
+  height: 470px;
+
+  top: 50%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+
+  border-radius: 24px;
+
+  transform: translate(-50%, -50%) rotate(0deg) !important;
+
+  border-color: rgba(167, 139, 250, 0.95);
+
+  z-index: 50;
+
+  box-shadow:
+    0 35px 90px rgba(0, 0, 0, 0.6),
+    0 0 0 8px rgba(139, 92, 246, 0.04),
+    0 0 60px rgba(109, 40, 217, 0.25);
+}
+
+.photo-focused:hover {
+  transform: translate(-50%, -50%) rotate(0deg) !important;
+
+  border-color: #c4b5fd;
+}
+
+.photo-focused img {
+  transform: scale(1);
+}
+
+.photo-focused:hover img {
+  transform: scale(1.015);
+}
+
+.photo-hidden {
+  opacity: 0;
+
+  pointer-events: none;
+
+  transform: scale(0.7) !important;
+
+  filter: blur(4px);
+}
+
+.about-content {
+  max-width: 620px;
+
+  position: relative;
+  z-index: 3;
+}
+
+.about-label {
+  margin: 0 0 14px;
+
+  color: #8b5cf6;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  letter-spacing: 0.12em;
+
+  text-transform: uppercase;
+
+  text-shadow: 0 0 12px rgba(109, 40, 217, 0.3);
+}
+
+.about-title {
+  margin: 0 0 30px;
+
+  color: #f4f4f5;
+
+  font-size: 58px;
+
+  line-height: 0.98;
+
+  letter-spacing: -0.045em;
+}
+
+.about-description {
+  margin: 0 0 22px;
+
+  color: #a1a1aa;
+
+  font-size: 17px;
+
+  line-height: 1.85;
+}
+
+.about-resume {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  margin-top: 10px;
+
+  padding-bottom: 6px;
+
+  color: #c4b5fd;
+
+  font-size: 15px;
+
+  font-weight: 500;
+
+  text-decoration: none;
+
+  border-bottom: 1px solid rgba(139, 92, 246, 0.45);
+
+  transition:
+    color 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.about-resume span {
+  transition: transform 0.3s ease;
+}
+
+.about-resume:hover {
+  color: #a78bfa;
+
+  border-color: #8b5cf6;
+
+  transform: translateY(-1px);
+}
+
+.about-resume:hover span {
+  transform: translate(4px, -4px);
+}
+
+@keyframes aboutFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes constellationDraw {
+  from {
+    stroke-dashoffset: 35;
+    opacity: 0;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+    opacity: 0.75;
+  }
+}
+
+@keyframes constellationPulse {
+  0%,
+  100% {
+    opacity: 0.45;
+    stroke-width: 1.4;
+  }
+
+  50% {
+    opacity: 0.95;
+    stroke-width: 2;
+  }
+}
+
+@keyframes constellationMove {
+  from {
+    stroke-dashoffset: 0;
+  }
+
+  to {
+    stroke-dashoffset: -120;
+  }
+}
+
+@keyframes nodePulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+
+  50% {
+    transform: scale(1.8);
+    opacity: 1;
+  }
+}
+
+@keyframes starPulse {
+  0%,
+  100% {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+
+  50% {
+    transform: scale(1.8);
+    opacity: 1;
+  }
+}
+
+@keyframes sigilRotate {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes sigilBreath {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 8px rgba(109, 40, 217, 0.1));
+  }
+
+  50% {
+    filter: drop-shadow(0 0 15px rgba(109, 40, 217, 0.2));
+  }
+}
+
+@keyframes sigilNodePulse {
+  0%,
+  100% {
+    opacity: 0.25;
+    transform: scale(0.9);
+  }
+
+  50% {
+    opacity: 0.8;
+    transform: scale(1.25);
+  }
+}
+
+@keyframes sigilStarPulse {
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: scale(0.8);
+  }
+
+  50% {
+    opacity: 0.7;
+    transform: scale(1.4);
+  }
+}
+
+@media (max-width: 900px) {
+  .about {
+    grid-template-columns: 1fr;
+
+    gap: 60px;
+
+    padding: 90px 30px 120px;
+  }
+
+  .about-sigil {
+    width: 600px;
+    height: 600px;
+
+    left: 50%;
+    top: 42%;
+  }
+
+  .about-visual {
+    width: 560px;
+    max-width: 100%;
+    height: 580px;
+
+    margin: 0 auto;
+  }
+
+  .about-content {
+    max-width: 700px;
+
+    margin: 0 auto;
+  }
+
+  .about-title {
+    font-size: 50px;
+  }
+
+  .photo-focused {
+    width: 315px;
+    height: 435px;
+  }
+}
+
+@media (max-width: 600px) {
+  .about {
+    width: 100%;
+    max-width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 55px 20px 85px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 32px;
+
+    overflow: hidden;
+  }
+
+  .about-sigil {
+    width: 430px;
+    height: 430px;
+
+    top: 22%;
+    left: 50%;
+
+    opacity: 0.6;
+  }
+
+  .about-visual {
+    position: relative;
+
+    width: 100%;
+    max-width: 350px;
+    height: 365px;
+
+    margin: 0 auto;
+  }
+
+  .about-constellation {
+    display: none;
+  }
+
+  .photo-one {
+    width: 185px;
+    height: 255px;
+
+    top: 60px;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+
+    transform: translateX(-50%) rotate(-1deg);
+
+    border-radius: 21px;
+
+    z-index: 5;
+  }
+
+  .photo-one:hover {
+    transform: translateX(-50%) rotate(-1deg);
+  }
+
+  .photo-two {
+    width: 130px;
+    height: 88px;
+
+    top: 12px;
+    left: 5px;
+    right: auto;
+    bottom: auto;
+
+    transform: rotate(-5deg);
+
+    border-radius: 10px;
+
+    z-index: 3;
+  }
+
+  .photo-two:hover {
+    transform: rotate(-5deg);
+  }
+
+  .photo-three {
+    width: 135px;
+    height: 94px;
+
+    top: auto;
+    left: auto;
+    right: 5px;
+    bottom: 5px;
+
+    transform: rotate(5deg);
+
+    border-radius: 10px;
+
+    z-index: 3;
+  }
+
+  .photo-three:hover {
+    transform: rotate(5deg);
+  }
+
+  .photo-focused {
+    width: 225px;
+    height: 315px;
+
+    top: 50%;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+
+    transform: translate(-50%, -50%) rotate(0deg) !important;
+
+    z-index: 50;
+  }
+
+  .photo-focused:hover {
+    transform: translate(-50%, -50%) rotate(0deg) !important;
+  }
+
+  .photo-hidden {
+    opacity: 0;
+
+    pointer-events: none;
+
+    transform: scale(0.7) !important;
+
+    filter: blur(4px);
+  }
+
+  .about-content {
+    width: 100%;
+    max-width: 100%;
+
+    margin: 0;
+
+    text-align: left;
+  }
+
+  .about-label {
+    margin-bottom: 10px;
+
+    font-size: 11px;
+  }
+
+  .about-title {
+    margin-bottom: 24px;
+
+    font-size: 40px;
+
+    line-height: 1;
+
+    letter-spacing: -0.04em;
+  }
+
+  .about-description {
+    max-width: 340px;
+
+    margin-bottom: 20px;
+
+    font-size: 15px;
+
+    line-height: 1.7;
+  }
+
+  .about-resume {
+    margin-top: 6px;
+
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,784 @@
+.projects {
+  position: relative;
+
+  padding: 120px 40px 160px;
+
+  overflow: hidden;
+}
+
+.projects-heading {
+  max-width: 1100px;
+
+  margin: 0 auto 70px;
+
+  text-align: center;
+}
+
+.projects-label {
+  margin: 0 0 12px;
+
+  color: #8b5cf6;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  letter-spacing: 0.14em;
+
+  text-transform: uppercase;
+}
+
+.projects-title {
+  margin: 0;
+
+  padding: 0;
+
+  color: #f4f4f5;
+
+  font-size: 56px;
+
+  line-height: 1;
+
+  letter-spacing: -0.045em;
+}
+
+.projects-phone {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  perspective: 1200px;
+}
+
+.phone-frame {
+  position: relative;
+
+  width: 370px;
+  height: 740px;
+
+  padding: 9px;
+
+  border-radius: 52px;
+
+  background: linear-gradient(
+    145deg,
+    #403650,
+    #15121d 30%,
+    #09080d 65%,
+    #382a50
+  );
+
+  box-shadow:
+    0 45px 100px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(196, 181, 253, 0.15),
+    0 0 60px rgba(91, 33, 182, 0.12);
+}
+
+.phone-frame:hover {
+  transform: translateY(-8px);
+
+  box-shadow:
+    0 55px 120px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(196, 181, 253, 0.22),
+    0 0 80px rgba(91, 33, 182, 0.18);
+}
+
+.phone-screen {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: hidden;
+
+  border-radius: 44px;
+
+  background:
+    radial-gradient(
+      circle at 75% 15%,
+      rgba(109, 40, 217, 0.18),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 15% 80%,
+      rgba(76, 29, 149, 0.13),
+      transparent 35%
+    ),
+    #0c0a12;
+}
+
+.phone-island {
+  position: absolute;
+
+  top: 13px;
+  left: 50%;
+
+  width: 105px;
+  height: 29px;
+
+  transform: translateX(-50%);
+
+  border-radius: 20px;
+
+  background: #020203;
+
+  z-index: 20;
+}
+
+.phone-status {
+  position: absolute;
+
+  top: 18px;
+  left: 0;
+
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  box-sizing: border-box;
+
+  padding: 0 28px;
+
+  color: #f4f4f5;
+
+  font-size: 11px;
+  font-weight: 600;
+
+  z-index: 10;
+}
+
+.phone-status-icons {
+  display: flex;
+
+  gap: 5px;
+
+  align-items: center;
+
+  font-size: 7px;
+}
+
+.phone-home {
+  position: relative;
+
+  height: 100%;
+
+  box-sizing: border-box;
+
+  padding: 80px 27px 90px;
+}
+
+.phone-home-heading {
+  margin-bottom: 45px;
+}
+
+.phone-home-heading p {
+  margin: 0 0 3px;
+
+  color: #f4f4f5;
+
+  font-size: 29px;
+  font-weight: 650;
+
+  letter-spacing: -0.04em;
+}
+
+.phone-home-heading span {
+  color: #71717a;
+
+  font-size: 11px;
+}
+
+.app-grid {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 38px 30px;
+}
+
+.project-app {
+  display: flex;
+
+  flex-direction: column;
+  align-items: center;
+
+  gap: 9px;
+
+  padding: 0;
+
+  color: inherit;
+
+  background: none;
+
+  border: 0;
+
+  cursor: pointer;
+}
+
+.app-icon {
+  position: relative;
+
+  width: 78px;
+  height: 78px;
+
+  display: grid;
+
+  place-items: center;
+
+  overflow: hidden;
+
+  border-radius: 20px;
+
+  border: 1px solid rgba(196, 181, 253, 0.18);
+
+  box-shadow:
+    0 12px 28px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
+}
+
+.app-icon::before {
+  content: "";
+
+  position: absolute;
+
+  width: 60px;
+  height: 120px;
+
+  top: -60px;
+  left: -50px;
+
+  background: rgba(255, 255, 255, 0.12);
+
+  transform: rotate(35deg);
+
+  transition: transform 0.6s ease;
+}
+
+.project-app:hover .app-icon {
+  transform: translateY(-7px) scale(1.05);
+
+  border-color: rgba(167, 139, 250, 0.5);
+
+  box-shadow:
+    0 18px 38px rgba(0, 0, 0, 0.38),
+    0 0 25px rgba(109, 40, 217, 0.2);
+}
+
+.project-app:hover .app-icon::before {
+  transform: translateX(145px) rotate(35deg);
+}
+
+.app-icon-football {
+  background: linear-gradient(145deg, #3b1768, #6d28d9);
+}
+
+.app-icon-soccer {
+  background: linear-gradient(145deg, #17121f, #4c1d95);
+}
+
+.app-icon-game {
+  background: linear-gradient(145deg, #241437, #7c3aed);
+}
+
+.app-name {
+  width: 110px;
+
+  color: #d4d4d8;
+
+  font-size: 10px;
+
+  line-height: 1.25;
+
+  text-align: center;
+}
+
+.football-icon {
+  position: relative;
+
+  width: 47px;
+  height: 28px;
+
+  border: 2px solid #ddd6fe;
+
+  border-radius: 50%;
+
+  transform: rotate(-20deg);
+}
+
+.football-icon::before {
+  content: "";
+
+  position: absolute;
+
+  width: 26px;
+  height: 1px;
+
+  top: 50%;
+  left: 50%;
+
+  background: #ddd6fe;
+
+  transform: translate(-50%, -50%);
+}
+
+.football-lace {
+  position: absolute;
+
+  width: 1px;
+  height: 8px;
+
+  top: 50%;
+
+  background: #ddd6fe;
+
+  transform: translateY(-50%);
+}
+
+.lace-one {
+  left: 19px;
+}
+
+.lace-two {
+  left: 23px;
+}
+
+.lace-three {
+  left: 27px;
+}
+
+.soccer-icon {
+  position: relative;
+
+  width: 45px;
+  height: 45px;
+
+  border: 2px solid #ddd6fe;
+
+  border-radius: 50%;
+}
+
+.soccer-center {
+  position: absolute;
+
+  width: 14px;
+  height: 14px;
+
+  top: 50%;
+  left: 50%;
+
+  background: #ddd6fe;
+
+  clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+
+  transform: translate(-50%, -50%);
+}
+
+.soccer-ring {
+  position: absolute;
+
+  inset: 8px;
+
+  border: 1px dashed rgba(221, 214, 254, 0.65);
+
+  border-radius: 50%;
+}
+
+.game-icon {
+  position: relative;
+
+  width: 52px;
+  height: 33px;
+
+  border: 2px solid #ddd6fe;
+
+  border-radius: 16px 16px 20px 20px;
+}
+
+.game-dpad {
+  position: absolute;
+
+  left: 9px;
+  top: 3px;
+
+  color: #ddd6fe;
+
+  font-size: 19px;
+
+  line-height: 1;
+}
+
+.game-buttons {
+  position: absolute;
+
+  right: 8px;
+  top: 10px;
+
+  display: flex;
+
+  gap: 5px;
+}
+
+.game-buttons span {
+  width: 5px;
+  height: 5px;
+
+  border-radius: 50%;
+
+  background: #ddd6fe;
+}
+
+.phone-dock {
+  position: absolute;
+
+  left: 50%;
+  bottom: 35px;
+
+  display: flex;
+
+  gap: 18px;
+
+  padding: 12px 20px;
+
+  transform: translateX(-50%);
+
+  border: 1px solid rgba(255, 255, 255, 0.05);
+
+  border-radius: 22px;
+
+  background: rgba(255, 255, 255, 0.035);
+
+  backdrop-filter: blur(12px);
+}
+
+.phone-dock span {
+  width: 9px;
+  height: 9px;
+
+  border-radius: 3px;
+
+  background: rgba(167, 139, 250, 0.35);
+}
+
+.project-app-screen {
+  position: absolute;
+
+  inset: 0;
+
+  padding: 68px 25px 60px;
+
+  box-sizing: border-box;
+
+  overflow-y: auto;
+
+  background:
+    radial-gradient(
+      circle at 80% 10%,
+      rgba(109, 40, 217, 0.18),
+      transparent 30%
+    ),
+    #0c0a12;
+
+  animation: projectOpen 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.project-app-screen::-webkit-scrollbar {
+  width: 0;
+}
+
+.project-back {
+  margin-bottom: 24px;
+
+  padding: 0;
+
+  color: #a78bfa;
+
+  background: none;
+
+  border: 0;
+
+  font-size: 11px;
+
+  cursor: pointer;
+}
+
+.project-screen-content {
+  text-align: left;
+}
+
+.project-screen-icon {
+  width: 65px;
+  height: 65px;
+
+  margin-bottom: 18px;
+
+  border-radius: 17px;
+}
+
+.project-screen-icon .football-icon {
+  transform: scale(0.8) rotate(-20deg);
+}
+
+.project-screen-icon .soccer-icon {
+  transform: scale(0.8);
+}
+
+.project-screen-icon .game-icon {
+  transform: scale(0.8);
+}
+
+.project-screen-content h2 {
+  margin: 0 0 5px;
+
+  color: #f4f4f5;
+
+  font-size: 26px;
+
+  line-height: 1;
+
+  letter-spacing: -0.04em;
+}
+
+.project-screen-category {
+  margin: 0 0 22px;
+
+  color: #8b5cf6;
+
+  font-size: 10px;
+
+  line-height: 1.4;
+}
+
+.project-preview {
+  position: relative;
+
+  width: 100%;
+
+  min-height: 190px;
+  max-height: 240px;
+
+  margin-bottom: 20px;
+
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(167, 139, 250, 0.15);
+
+  border-radius: 16px;
+
+  background: #09080e;
+}
+
+.project-preview img {
+  width: 100%;
+  height: 100%;
+
+  max-height: 240px;
+
+  display: block;
+
+  object-fit: contain;
+}
+
+.preview-arrow {
+  position: absolute;
+
+  top: 50%;
+
+  width: 32px;
+  height: 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transform: translateY(-50%);
+
+  color: #ffffff;
+
+  background: rgba(12, 10, 18, 0.72);
+
+  border: 1px solid rgba(196, 181, 253, 0.2);
+
+  border-radius: 50%;
+
+  backdrop-filter: blur(8px);
+
+  cursor: pointer;
+
+  font-size: 16px;
+
+  z-index: 5;
+
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.preview-arrow:hover {
+  background: rgba(109, 40, 217, 0.55);
+
+  border-color: rgba(167, 139, 250, 0.6);
+
+  transform: translateY(-50%) scale(1.08);
+}
+
+.preview-arrow-left {
+  left: 10px;
+}
+
+.preview-arrow-right {
+  right: 10px;
+}
+
+.preview-counter {
+  position: absolute;
+
+  right: 10px;
+  bottom: 10px;
+
+  padding: 4px 7px;
+
+  color: #ddd6fe;
+
+  background: rgba(12, 10, 18, 0.72);
+
+  border-radius: 10px;
+
+  font-size: 8px;
+
+  backdrop-filter: blur(8px);
+}
+
+.project-screen-description {
+  margin: 0 0 20px;
+
+  color: #a1a1aa;
+
+  font-size: 11px;
+
+  line-height: 1.7;
+}
+
+.project-tech {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 7px;
+
+  margin-bottom: 25px;
+}
+
+.project-tech span {
+  padding: 5px 8px;
+
+  color: #c4b5fd;
+
+  border: 1px solid rgba(139, 92, 246, 0.22);
+
+  border-radius: 20px;
+
+  background: rgba(109, 40, 217, 0.08);
+
+  font-size: 8px;
+}
+
+.project-github {
+  display: inline-flex;
+
+  padding-bottom: 4px;
+
+  color: #f4f4f5;
+
+  text-decoration: none;
+
+  border-bottom: 1px solid rgba(139, 92, 246, 0.5);
+
+  font-size: 11px;
+
+  transition:
+    color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.project-github:hover {
+  color: #a78bfa;
+
+  border-color: #8b5cf6;
+}
+
+.phone-home-indicator {
+  position: absolute;
+
+  left: 50%;
+  bottom: 11px;
+
+  width: 115px;
+  height: 4px;
+
+  transform: translateX(-50%);
+
+  border-radius: 5px;
+
+  background: rgba(255, 255, 255, 0.65);
+
+  z-index: 50;
+}
+
+@keyframes projectOpen {
+  from {
+    opacity: 0;
+
+    transform: scale(0.94) translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: scale(1) translateY(0);
+  }
+}
+
+@media (max-width: 600px) {
+  .projects {
+    padding: 90px 20px 120px;
+  }
+
+  .projects-heading {
+    margin-bottom: 50px;
+  }
+
+  .projects-title {
+    font-size: 42px;
+  }
+
+  .phone-frame {
+    width: min(340px, 90vw);
+    height: 680px;
+  }
+
+  .app-grid {
+    gap: 32px 20px;
+  }
+
+  .app-icon {
+    width: 70px;
+    height: 70px;
+  }
+
+  .project-preview {
+    min-height: 170px;
+    max-height: 210px;
+  }
+}

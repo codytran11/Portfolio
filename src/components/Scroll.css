@@ -1,0 +1,325 @@
+.scroll-map {
+  position: fixed;
+
+  top: 50%;
+  right: 24px;
+
+  width: 95px;
+  height: 420px;
+
+  transform: translateY(-50%);
+
+  z-index: 90;
+
+  pointer-events: none;
+}
+
+.scroll-rail {
+  position: absolute;
+
+  top: 0;
+  right: 12px;
+
+  width: 1px;
+  height: 100%;
+
+  background: rgba(91, 33, 182, 0.22);
+
+  box-shadow: 0 0 10px rgba(91, 33, 182, 0.12);
+
+  pointer-events: auto;
+}
+
+.scroll-progress {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 1px;
+
+  background: linear-gradient(to bottom, #4c1d95, #7c3aed, #c4b5fd);
+
+  box-shadow:
+    0 0 5px rgba(139, 92, 246, 0.9),
+    0 0 12px rgba(109, 40, 217, 0.55),
+    0 0 22px rgba(76, 29, 149, 0.35);
+
+  transition: height 0.12s linear;
+}
+
+.scroll-progress::after {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  bottom: -4px;
+
+  width: 7px;
+  height: 7px;
+
+  transform: translateX(-50%) rotate(45deg);
+
+  background: #c4b5fd;
+
+  border: 1px solid #8b5cf6;
+
+  box-shadow:
+    0 0 7px rgba(196, 181, 253, 1),
+    0 0 15px rgba(139, 92, 246, 0.8),
+    0 0 28px rgba(109, 40, 217, 0.5);
+}
+
+.scroll-rune {
+  position: absolute;
+
+  right: -7px;
+
+  display: flex;
+  align-items: center;
+
+  cursor: pointer;
+
+  transform: translateY(-50%);
+
+  pointer-events: auto;
+}
+
+.rune-about {
+  top: 12%;
+}
+
+.rune-projects {
+  top: 52%;
+}
+
+.rune-contact {
+  top: 92%;
+}
+
+.rune-symbol {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 15px;
+  height: 15px;
+
+  color: #5b21b6;
+
+  font-size: 15px;
+
+  text-shadow: 0 0 6px rgba(91, 33, 182, 0.7);
+
+  transition:
+    color 0.35s ease,
+    transform 0.35s ease,
+    text-shadow 0.35s ease;
+}
+
+.rune-symbol::before {
+  content: "";
+
+  position: absolute;
+
+  width: 24px;
+  height: 24px;
+
+  border: 1px solid rgba(139, 92, 246, 0);
+
+  border-radius: 50%;
+
+  transition:
+    border-color 0.35s ease,
+    transform 0.35s ease,
+    opacity 0.35s ease;
+}
+
+.rune-label {
+  position: absolute;
+
+  right: 26px;
+
+  color: #6d5f82;
+
+  font-size: 9px;
+  font-weight: 600;
+
+  letter-spacing: 0.14em;
+
+  text-transform: uppercase;
+
+  opacity: 0;
+
+  transform: translateX(8px);
+
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease,
+    color 0.3s ease;
+
+  white-space: nowrap;
+}
+
+.scroll-rune:hover .rune-label,
+.scroll-rune.active .rune-label {
+  opacity: 1;
+
+  transform: translateX(0);
+}
+
+.scroll-rune:hover .rune-symbol {
+  color: #a78bfa;
+
+  transform: scale(1.25);
+
+  text-shadow:
+    0 0 8px rgba(167, 139, 250, 1),
+    0 0 18px rgba(109, 40, 217, 0.7);
+}
+
+.scroll-rune.active .rune-symbol {
+  color: #ddd6fe;
+
+  transform: scale(1.35);
+
+  text-shadow:
+    0 0 7px rgba(221, 214, 254, 1),
+    0 0 16px rgba(167, 139, 250, 0.9),
+    0 0 30px rgba(109, 40, 217, 0.65);
+
+  animation: runePulse 2.2s ease-in-out infinite;
+}
+
+.scroll-rune.active .rune-symbol::before {
+  border-color: rgba(139, 92, 246, 0.35);
+
+  animation: runeOrbit 6s linear infinite;
+}
+
+.scroll-rune.active .rune-label {
+  color: #a78bfa;
+}
+
+.scroll-star {
+  position: absolute;
+
+  color: #6d28d9;
+
+  font-size: 8px;
+
+  text-shadow: 0 0 6px rgba(109, 40, 217, 0.8);
+
+  pointer-events: none;
+
+  animation: darkStar 3.5s ease-in-out infinite;
+}
+
+.star-one {
+  top: 28%;
+  right: -2px;
+
+  animation-delay: 0s;
+}
+
+.star-two {
+  top: 70%;
+  right: 6px;
+
+  font-size: 6px;
+
+  animation-delay: 1.2s;
+}
+
+.star-three {
+  top: 40%;
+  right: 18px;
+
+  font-size: 5px;
+
+  animation-delay: 2.1s;
+}
+
+@keyframes runePulse {
+  0%,
+  100% {
+    filter: brightness(0.85);
+  }
+
+  50% {
+    filter: brightness(1.35);
+  }
+}
+
+@keyframes runeOrbit {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes darkStar {
+  0%,
+  100% {
+    opacity: 0.15;
+
+    transform: scale(0.7);
+  }
+
+  50% {
+    opacity: 1;
+
+    transform: scale(1.4);
+
+    color: #c4b5fd;
+  }
+}
+
+@media (max-width: 900px) {
+  .scroll-map {
+    right: 8px;
+
+    width: 50px;
+  }
+
+  .rune-label {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .scroll-map {
+    right: 5px;
+
+    width: 30px;
+    height: 300px;
+
+    opacity: 0.65;
+  }
+
+  .scroll-rail {
+    right: 8px;
+  }
+
+  .rune-symbol {
+    width: 12px;
+    height: 12px;
+
+    font-size: 11px;
+  }
+
+  .rune-symbol::before {
+    width: 18px;
+    height: 18px;
+  }
+
+  .scroll-star {
+    display: none;
+  }
+}
