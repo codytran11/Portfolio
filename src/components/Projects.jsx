@@ -12,8 +12,7 @@ import incomingDangerGameplay from "../assets/projects/Incoming Danger/gameplay.
 import incomingDangerLobby from "../assets/projects/Incoming Danger/lobby.jpg";
 import incomingDangerWave from "../assets/projects/Incoming Danger/wave-survival.jpg";
 import incomingDangerMainScreen from "../assets/projects/Incoming Danger/mainscreen.png";
-
-import shotClockHome from "../assets/projects/ShotClock/shotclock-home.png";
+import shotClockHome from "../assets/shotclock-home.png";
 
 import "./Projects.css";
 
