@@ -12,53 +12,10 @@ import incomingDangerGameplay from "../assets/projects/Incoming Danger/gameplay.
 import incomingDangerLobby from "../assets/projects/Incoming Danger/lobby.jpg";
 import incomingDangerWave from "../assets/projects/Incoming Danger/wave-survival.jpg";
 import incomingDangerMainScreen from "../assets/projects/Incoming Danger/mainscreen.png";
+
 import shotClockHome from "../assets/shotclock-home.png";
 
 import "./Projects.css";
-
-function ProjectIcon({ icon }) {
-  if (icon === "football") {
-    return (
-      <div className="football-icon">
-        <span className="football-lace lace-one" />
-        <span className="football-lace lace-two" />
-        <span className="football-lace lace-three" />
-      </div>
-    );
-  }
-
-  if (icon === "soccer") {
-    return (
-      <div className="soccer-icon">
-        <span className="soccer-center" />
-        <span className="soccer-ring" />
-      </div>
-    );
-  }
-
-  if (icon === "game") {
-    return (
-      <div className="game-icon">
-        <span className="game-dpad">+</span>
-
-        <div className="game-buttons">
-          <span />
-          <span />
-        </div>
-      </div>
-    );
-  }
-
-  if (icon === "shotclock") {
-    return (
-      <div className="shotclock-icon">
-        <span>60</span>
-      </div>
-    );
-  }
-
-  return null;
-}
 
 function Projects() {
   const [activeProject, setActiveProject] = useState(null);
@@ -119,7 +76,7 @@ function Projects() {
       category: "React Web Development",
       description:
         "A fast-paced sports debate game that gives players a random topic and 60 seconds to explain it, defend a take, or make their case.",
-      technologies: ["React", "Vite", "JavaScript", "CSS", "Vercel"],
+      technologies: ["React", "Vite", "JavaScript", "CSS"],
       github: "https://github.com/codytran11/hot-seat",
       website: "https://shotclock.website",
       images: [shotClockHome],
@@ -131,37 +88,31 @@ function Projects() {
     (project) => project.id === activeProject,
   );
 
-  function openProject(projectId) {
+  const openProject = (projectId) => {
     setActiveProject(projectId);
     setActiveImage(0);
-  }
+  };
 
-  function closeProject() {
+  const closeProject = () => {
     setActiveProject(null);
     setActiveImage(0);
-  }
+  };
 
-  function nextImage() {
-    if (!selectedProject) {
-      return;
-    }
+  const nextImage = () => {
+    if (!selectedProject) return;
 
-    setActiveImage(
-      (currentImage) => (currentImage + 1) % selectedProject.images.length,
-    );
-  }
+    setActiveImage((current) => (current + 1) % selectedProject.images.length);
+  };
 
-  function previousImage() {
-    if (!selectedProject) {
-      return;
-    }
+  const previousImage = () => {
+    if (!selectedProject) return;
 
     setActiveImage(
-      (currentImage) =>
-        (currentImage - 1 + selectedProject.images.length) %
+      (current) =>
+        (current - 1 + selectedProject.images.length) %
         selectedProject.images.length,
     );
-  }
+  };
 
   return (
     <section id="projects" className="projects">
@@ -201,7 +152,37 @@ function Projects() {
                       onClick={() => openProject(project.id)}
                     >
                       <div className={`app-icon app-icon-${project.icon}`}>
-                        <ProjectIcon icon={project.icon} />
+                        {project.icon === "football" && (
+                          <div className="football-icon">
+                            <span className="football-lace lace-one" />
+                            <span className="football-lace lace-two" />
+                            <span className="football-lace lace-three" />
+                          </div>
+                        )}
+
+                        {project.icon === "soccer" && (
+                          <div className="soccer-icon">
+                            <span className="soccer-center" />
+                            <span className="soccer-ring" />
+                          </div>
+                        )}
+
+                        {project.icon === "game" && (
+                          <div className="game-icon">
+                            <span className="game-dpad">+</span>
+
+                            <div className="game-buttons">
+                              <span />
+                              <span />
+                            </div>
+                          </div>
+                        )}
+
+                        {project.icon === "shotclock" && (
+                          <div className="shotclock-icon">
+                            <span>60</span>
+                          </div>
+                        )}
                       </div>
 
                       <span className="app-name">{project.title}</span>
@@ -227,7 +208,37 @@ function Projects() {
                   <div
                     className={`app-icon project-screen-icon app-icon-${selectedProject.icon}`}
                   >
-                    <ProjectIcon icon={selectedProject.icon} />
+                    {selectedProject.icon === "football" && (
+                      <div className="football-icon">
+                        <span className="football-lace lace-one" />
+                        <span className="football-lace lace-two" />
+                        <span className="football-lace lace-three" />
+                      </div>
+                    )}
+
+                    {selectedProject.icon === "soccer" && (
+                      <div className="soccer-icon">
+                        <span className="soccer-center" />
+                        <span className="soccer-ring" />
+                      </div>
+                    )}
+
+                    {selectedProject.icon === "game" && (
+                      <div className="game-icon">
+                        <span className="game-dpad">+</span>
+
+                        <div className="game-buttons">
+                          <span />
+                          <span />
+                        </div>
+                      </div>
+                    )}
+
+                    {selectedProject.icon === "shotclock" && (
+                      <div className="shotclock-icon">
+                        <span>60</span>
+                      </div>
+                    )}
                   </div>
 
                   <h2>{selectedProject.fullTitle}</h2>
@@ -280,7 +291,7 @@ function Projects() {
                   <div className="project-links">
                     {selectedProject.website && (
                       <a
-                        className="project-link project-live"
+                        className="project-action project-action-live"
                         href={selectedProject.website}
                         target="_blank"
                         rel="noreferrer"
@@ -290,7 +301,7 @@ function Projects() {
                     )}
 
                     <a
-                      className="project-link"
+                      className="project-action"
                       href={selectedProject.github}
                       target="_blank"
                       rel="noreferrer"
